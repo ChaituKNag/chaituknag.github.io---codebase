@@ -59,6 +59,8 @@
     "start": "npm run develop",
     "build": "gatsby build",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js",
-    "deploy": "rm -fR ./public-gh-pages/* && cp -pr ./public/* ./public-gh-pages/"
+    "gh-deploy": "rm -fR ./public-gh-pages/* && cp -pr ./public/* ./public-gh-pages/",
+    "gh-push": "cd ./public-gh-pages && git add . && git commit -m \"pushing latest changes\" && git push",
+    "build:deploy": "npm run build && npm run gh-deploy && npm run gh-push"
   }
 }
