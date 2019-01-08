@@ -36,18 +36,18 @@ class Layout extends React.Component {
           style={{
             fontFamily: `Montserrat, sans-serif`,
             marginTop: 0,
+            display: 'flex',
+            justifyContent: 'space-between'
           }}
         >
+          {title}
           <Link
             style={{
               boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
+              textDecoration: `underline`,
             }}
             to={`/`}
-          >
-            {title}
-          </Link>
+          > Home </Link>
         </h3>
       )
     }

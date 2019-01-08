@@ -37,6 +37,8 @@ class BlogIndex extends React.Component {
             </div>
           )
         })}
+
+        { posts.length === 0 && <p>The fun has not yet begun!</p>}
       </Layout>
     )
   }
