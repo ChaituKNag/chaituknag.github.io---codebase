@@ -44,7 +44,7 @@ class Layout extends React.Component {
           <Link
             style={{
               boxShadow: `none`,
-              textDecoration: `underline`,
+              textDecoration: `none`,
             }}
             to={`/`}
           > Home </Link>

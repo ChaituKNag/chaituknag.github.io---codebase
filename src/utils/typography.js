@@ -1,20 +1,26 @@
-import Typography from 'typography'
-import Wordpress2016 from 'typography-theme-wordpress-2016'
+import Typography from 'typography';
+import Alton from 'typography-theme-alton';
 
-Wordpress2016.overrideThemeStyles = () => {
+Alton.overrideThemeStyles = () => {
   return {
-    'a.gatsby-resp-image-link': {
-      boxShadow: `none`,
+    'a': {
+      color: "#470FF4",
+      background: "linear-gradient(to top,#CEBBC9,#CEBBC9 100%,#0000 100%,#0000)",
+      backgroundSize: "100% 30%",
+      backgroundPosition: "center 100%",
+      backgroundRepeat: "no-repeat"
     },
-    'body': {
-      borderTop: '10px solid #663399'
+    'a:hover': {
+      backgroundSize: "100% 100%"
+    },
+    'p': {
+      lineHeight: 1.6
     }
   }
 }
 
-delete Wordpress2016.googleFonts
-
-const typography = new Typography(Wordpress2016)
+// const typography = new Typography(Wordpress2016)
+const typography = new Typography(Alton);
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {
