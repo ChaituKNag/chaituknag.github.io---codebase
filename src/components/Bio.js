@@ -10,6 +10,7 @@ function Bio() {
       query={bioQuery}
       render={data => {
         const { author, social } = data.site.siteMetadata
+
         return (
           <div
             style={{
@@ -30,9 +31,13 @@ function Bio() {
             <p>
               Personal and technical views of <strong>{author}</strong>
               {` `}
-              <a target="_blank" rel="noreferrer" href={`https://twitter.com/${social.twitter}`}>Twitter</a>
-              {` ◦ `}
-              <a target="_blank" rel="noreferrer" href={`https://github.com/${social.github}`}>Github</a>
+              <a target="_blank" rel="noreferrer" href={`https://twitter.com/${social.twitter}`}>twitter</a>
+              {` • `}
+              <a target="_blank" rel="noreferrer" href={`https://github.com/${social.github}`}>github</a>
+              {` • `}
+              <a target="_blank" rel="noreferrer" href={`https://www.instagram.com/${social.instagram}`}>instagram</a>
+              {` • `}
+              <a target="_blank" rel="noreferrer" href={`https://facebook.com/${social.facebook}`}>fb</a>
             </p>
           </div>
         )
@@ -55,6 +60,9 @@ const bioQuery = graphql`
         author
         social {
           twitter
+          github
+          facebook
+          instagram
         }
       }
     }
