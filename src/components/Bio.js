@@ -28,11 +28,11 @@ function Bio() {
               }}
             />
             <p>
-              Written by <strong>{author}</strong> who lives and works in Hyderabad (India) building useful things.
+              Personal and technical views of <strong>{author}</strong>
               {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
-              </a>
+              <a target="_blank" rel="noreferrer" href={`https://twitter.com/${social.twitter}`}>Twitter</a>
+              {` ◦ `}
+              <a target="_blank" rel="noreferrer" href={`https://github.com/${social.github}`}>Github</a>
             </p>
           </div>
         )
