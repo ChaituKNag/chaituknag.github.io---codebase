@@ -29,7 +29,7 @@ function Bio() {
               }}
             />
             <p>
-              Personal and technical views of <strong>{author}</strong>
+              Personal and technical views of <strong>{author}</strong> <br/>
               {` `}
               <a target="_blank" rel="noreferrer" href={`https://twitter.com/${social.twitter}`}>twitter</a>
               {` • `}
