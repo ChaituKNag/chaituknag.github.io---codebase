@@ -9,6 +9,7 @@ module.exports = {
       github: `ChaituKNag`,
       facebook: `ChaituKNag`,
       instagram: `chaituknag`,
+      medium: `@nagachaitanyakonada`,
     },
   },
   plugins: [
