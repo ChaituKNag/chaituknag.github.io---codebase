@@ -4,6 +4,13 @@ import Image from 'gatsby-image'
 
 import { rhythm } from '../utils/typography'
 
+const iconStyle = {
+  width: 30,
+  height: 30,
+  marginRight: 20,
+  marginTop: 15,
+}
+
 function Bio() {
   return (
     <StaticQuery
@@ -31,13 +38,17 @@ function Bio() {
             <p>
               Personal and technical views of <strong>{author}</strong> <br/>
               {` `}
-              <a target="_blank" rel="noreferrer" href={`https://twitter.com/${social.twitter}`}>twitter</a>
-              {` • `}
-              <a target="_blank" rel="noreferrer" href={`https://github.com/${social.github}`}>github</a>
-              {` • `}
-              <a target="_blank" rel="noreferrer" href={`https://www.instagram.com/${social.instagram}`}>instagram</a>
-              {` • `}
-              <a target="_blank" rel="noreferrer" href={`https://facebook.com/${social.facebook}`}>fb</a>
+              <a className="no-underline" target="_blank" rel="noreferrer" href={`https://twitter.com/${social.twitter}`}>
+                <img style={iconStyle} src="/twitter.svg" alt="Twitter"/>
+              </a>
+              {` `}
+              <a className="no-underline" target="_blank" rel="noreferrer" href={`https://github.com/${social.github}`}><img style={iconStyle} src="/github.svg" alt="Github"/></a>
+              {` `}
+              <a className="no-underline" target="_blank" rel="noreferrer" href={`https://www.instagram.com/${social.instagram}`}><img style={iconStyle} src="/instagram.svg" alt="Instagram"/></a>
+              {` `}
+              <a className="no-underline" target="_blank" rel="noreferrer" href={`https://facebook.com/${social.facebook}`}><img style={iconStyle} src="/facebook.svg" alt="Facebook"/></a>
+              {` `}
+              <a className="no-underline" target="_blank" rel="noreferrer" href={`https://medium.com/${social.medium}`}><img style={iconStyle} src="/medium.svg" alt="Medium"/></a>
             </p>
           </div>
         )
