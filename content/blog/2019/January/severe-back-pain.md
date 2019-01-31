@@ -2,7 +2,7 @@
 title: The Great Back Pain of 2019
 date: '2019-01-30'
 path: /2019/01/30/the-great-back-pain
-spoiler: The pain was so bad, I thought I would never walk properly again. Also, my first wheel-chair experience at hospital 😜
+spoiler: The pain was so bad, I thought I would never walk properly again. Also, my first wheel-chair experience at hospital. 😜
 ---
 
 On Monday 28th January morning, I suffered great pain in the lower back towards my left side. 
