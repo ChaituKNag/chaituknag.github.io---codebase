@@ -62,8 +62,9 @@
     "start:static": "live-server ./gh-pages",
     "build": "gatsby build",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js",
+    "cname": "cp -p ./CNAME ./public/",
     "gh-deploy": "rm -fR ./gh-pages/* && cp -pr ./public/* ./gh-pages/",
     "gh-push": "cd ./gh-pages && git add . && git commit -m \"pushing latest changes\" && git push",
-    "build:deploy": "npm run build && npm run gh-deploy && npm run gh-push"
+    "build:deploy": "npm run build && npm run cname && npm run gh-deploy && npm run gh-push"
   }
 }
