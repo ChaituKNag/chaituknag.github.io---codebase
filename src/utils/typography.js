@@ -4,11 +4,13 @@ import Alton from 'typography-theme-alton';
 Alton.overrideThemeStyles = () => {
   return {
     'a': {
-      color: "#470FF4",
-      background: "linear-gradient(to top,#CEBBC9,#CEBBC9 100%,#0000 100%,#0000)",
+      color: "#1c87ff",
+      background: "linear-gradient(to top,#e896bf,#fff 100%,#0000 100%,#0000)",
       backgroundSize: "100% 30%",
       backgroundPosition: "center 100%",
-      backgroundRepeat: "no-repeat"
+      backgroundRepeat: "no-repeat",
+      transition: "background-size 250ms ease",
+      fontWeight: "bold"
     },
     'a:hover': {
       backgroundSize: "100% 100%"
