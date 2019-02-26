@@ -32,7 +32,7 @@ class BlogIndex extends React.Component {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small>{node.frontmatter.date} • {"☕".repeat((node.timeToRead - 1)/5 + 1)} {`${node.timeToRead} min read`}</small>
               <p dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler || node.excerpt }} />
             </div>
           )
@@ -66,6 +66,7 @@ export const pageQuery = graphql`
             path
             spoiler
           }
+          timeToRead
         }
       }
     }

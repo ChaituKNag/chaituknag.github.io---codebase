@@ -24,7 +24,7 @@ class BlogPostTemplate extends React.Component {
             marginTop: rhythm(-1),
           }}
         >
-          {post.frontmatter.date}
+          {post.frontmatter.date} • {"☕".repeat((post.timeToRead - 1)/5 + 1)} {`${post.timeToRead} min read`}
         </p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
@@ -83,6 +83,7 @@ export const pageQuery = graphql`
         spoiler
         banner
       }
+      timeToRead
     }
   }
 `
