@@ -22,7 +22,9 @@ function Bio() {
           <div
             style={{
               display: `flex`,
-              marginBottom: rhythm(2.5),
+              marginBottom: rhythm(1.5),
+              padding: rhythm(.8),
+              boxShadow: `0 2px 14px -4px rgba(0, 0, 0, .3)`
             }}
           >
             <Image
@@ -35,7 +37,7 @@ function Bio() {
                 borderRadius: `100%`,
               }}
             />
-            <p>
+            <p style={{margin: 0}}>
               Personal and technical views of <strong>{author}</strong> <br/>
               {` `}
               <a className="no-underline" target="_blank" rel="noreferrer" href={`https://twitter.com/${social.twitter}`}>
