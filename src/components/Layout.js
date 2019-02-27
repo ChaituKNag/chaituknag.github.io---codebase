@@ -16,6 +16,7 @@ class Layout extends React.Component {
             ...scale(1.5),
             marginBottom: rhythm(1.5),
             marginTop: 0,
+            paddingTop: rhythm(1.5)
           }}
         >
           <Link
@@ -34,10 +35,15 @@ class Layout extends React.Component {
       header = (
         <h3
           style={{
-            fontFamily: `Montserrat, sans-serif`,
+            
             marginTop: 0,
             display: 'flex',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            padding: `${rhythm(1)} 0`,
+            boxShadow: `rgba(0, 0, 0, 0.1) 0px 9px 13px -10px`,
+            position: `sticky`,
+            top: `0px`,
+            background: `white`
           }}
         >
           {title}
@@ -57,7 +63,7 @@ class Layout extends React.Component {
           marginLeft: `auto`,
           marginRight: `auto`,
           maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+          padding: `0 ${rhythm(3 / 4)} ${rhythm(1.5)}`,
         }}
       >
         {header}
