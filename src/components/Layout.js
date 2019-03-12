@@ -4,9 +4,9 @@ import { Link } from 'gatsby'
 import { rhythm, scale } from '../utils/typography'
 
 class Layout extends React.Component {
-  render() {
+  render () {
     const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
+    const rootPath = `${ __PATH_PREFIX__ }/`
     let header
 
     if (location.pathname === rootPath) {
@@ -35,11 +35,11 @@ class Layout extends React.Component {
       header = (
         <h3
           style={{
-            
+
             marginTop: 0,
             display: 'flex',
             justifyContent: 'space-between',
-            padding: `${rhythm(1)} 0`,
+            padding: `${ rhythm(1) } 0`,
             boxShadow: `rgba(0, 0, 0, 0.1) 0px 9px 13px -10px`,
             position: `sticky`,
             top: `0px`,
@@ -63,13 +63,15 @@ class Layout extends React.Component {
           marginLeft: `auto`,
           marginRight: `auto`,
           maxWidth: rhythm(24),
-          padding: `0 ${rhythm(3 / 4)} ${rhythm(1.5)}`,
+          padding: `0 ${ rhythm(3 / 4) } ${ rhythm(1.5) }`,
         }}
       >
         {header}
         {children}
         <footer>
-          © {new Date().getFullYear()} -- with <span style={{color: 'red'}}>❤</span> from Naga Chaitanya Konada.
+          © {new Date().getFullYear()} -- with
+          <span style={{ color: 'red' }}>❤</span>
+          from Naga Chaitanya Konada.
         </footer>
       </div>
     )

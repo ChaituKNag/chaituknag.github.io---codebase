@@ -11,7 +11,7 @@ const iconStyle = {
   marginTop: 15,
 }
 
-function Bio() {
+function Bio () {
   return (
     <StaticQuery
       query={bioQuery}
@@ -23,7 +23,7 @@ function Bio() {
             style={{
               display: `flex`,
               marginBottom: rhythm(1.5),
-              padding: rhythm(.8),
+              padding: rhythm(0.8),
               boxShadow: `0 2px 14px -4px rgba(0, 0, 0, .3)`
             }}
           >
@@ -37,20 +37,40 @@ function Bio() {
                 borderRadius: `100%`,
               }}
             />
-            <p style={{margin: 0}}>
-              Personal and technical views of <strong>{author}</strong> <br/>
+            <p style={{ margin: 0 }}>
+              Personal and technical views of <strong>{author}</strong> <br />
               {` `}
-              <a className="no-underline" target="_blank" rel="noreferrer" href={`https://twitter.com/${social.twitter}`}>
-                <img style={iconStyle} src="/twitter.svg" alt="Twitter"/>
+              <a className="no-underline"
+                target="_blank" rel="noreferrer"
+                href={`https://twitter.com/${ social.twitter }`}>
+                <img style={iconStyle} src="/twitter.svg" alt="Twitter" />
               </a>
               {` `}
-              <a className="no-underline" target="_blank" rel="noreferrer" href={`https://github.com/${social.github}`}><img style={iconStyle} src="/github.svg" alt="Github"/></a>
+              <a className="no-underline"
+                target="_blank" rel="noreferrer"
+                href={`https://github.com/${ social.github }`}>
+                <img style={iconStyle} src="/github.svg" alt="Github" /></a>
               {` `}
-              <a className="no-underline" target="_blank" rel="noreferrer" href={`https://www.instagram.com/${social.instagram}`}><img style={iconStyle} src="/instagram.svg" alt="Instagram"/></a>
+              <a className="no-underline"
+                target="_blank" rel="noreferrer"
+                href={`https://www.instagram.com/${ social.instagram }`}
+              >
+                <img style={iconStyle} src="/instagram.svg" alt="Instagram" />
+              </a>
               {` `}
-              <a className="no-underline" target="_blank" rel="noreferrer" href={`https://facebook.com/${social.facebook}`}><img style={iconStyle} src="/facebook.svg" alt="Facebook"/></a>
+              <a className="no-underline"
+                target="_blank" rel="noreferrer"
+                href={`https://facebook.com/${ social.facebook }`}
+              >
+                <img style={iconStyle} src="/facebook.svg" alt="Facebook" />
+              </a>
               {` `}
-              <a className="no-underline" target="_blank" rel="noreferrer" href={`https://medium.com/${social.medium}`}><img style={iconStyle} src="/medium.svg" alt="Medium"/></a>
+              <a className="no-underline"
+                target="_blank" rel="noreferrer"
+                href={`https://medium.com/${ social.medium }`}
+              >
+                <img style={iconStyle} src="/medium.svg" alt="Medium" />
+              </a>
             </p>
           </div>
         )

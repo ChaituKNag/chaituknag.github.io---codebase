@@ -1,5 +1,9 @@
 {
     "workbench.colorTheme": "Abyss",
     "workbench.iconTheme": "vs-minimal",
-    "window.autoDetectHighContrast": false
+    "window.autoDetectHighContrast": false,
+    "eslint.autoFixOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    "editor.formatOnSave": false,
+    "prettier.eslintIntegration": true
 }
