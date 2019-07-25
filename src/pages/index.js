@@ -21,7 +21,8 @@ class BlogIndex extends React.Component {
         <Bio />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
-          return (
+          const {status} = node.frontmatter;
+          return (status && status === 'complete')  ? (
             <div key={node.fields.slug}>
               <h3
                 style={{
@@ -35,7 +36,7 @@ class BlogIndex extends React.Component {
               <small>{node.frontmatter.date} • {"☕".repeat((node.timeToRead - 1)/5 + 1)} {`${node.timeToRead} min read`}</small>
               <p dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler || node.excerpt }} />
             </div>
-          )
+          ) : null
         })}
 
         { posts.length === 0 && <p>The fun has not yet begun!</p>}
@@ -65,6 +66,7 @@ export const pageQuery = graphql`
             title
             path
             spoiler
+            status
           }
           timeToRead
         }

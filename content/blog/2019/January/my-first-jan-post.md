@@ -3,6 +3,7 @@ title: My First January Post of 2019!!
 date: '2019-01-25'
 path: /2019/01/25/my-first-january-post-2019
 spoiler: First ever post in my knc.js.org blog, where I kinda mention my journey of life a bit.
+status: complete
 ---
 
 Many times in the past, I thought there is never going to be a day in my life such as this one.
