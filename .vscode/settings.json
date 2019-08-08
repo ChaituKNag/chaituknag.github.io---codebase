@@ -1,9 +1,14 @@
 {
     "workbench.colorTheme": "Abyss",
     "workbench.iconTheme": "vs-minimal",
-    "window.autoDetectHighContrast": false,
     "eslint.autoFixOnSave": true,
     "eslint.alwaysShowStatus": true,
-    "editor.formatOnSave": false,
-    "prettier.eslintIntegration": true
+    // "editor.formatOnSave": false,
+    // "prettier.eslintIntegration": true,
+    // "[javascript]": {
+    //     "editor.formatOnSave": true
+    // },
+    // "[javascriptreact]": {
+    //     "editor.formatOnSave": true
+    // }
 }
