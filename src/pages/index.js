@@ -1,16 +1,16 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
+import React from "react";
+import { Link, graphql } from "gatsby";
 
-import Bio from '../components/Bio'
-import Layout from '../components/Layout'
-import SEO from '../components/seo'
-import { rhythm } from '../utils/typography'
+import Bio from "../components/Bio";
+import Layout from "../components/Layout";
+import SEO from "../components/seo";
+import { rhythm } from "../utils/typography";
 
 class BlogIndex extends React.Component {
   render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+    const { data } = this.props;
+    const siteTitle = data.site.siteMetadata.title;
+    const posts = data.allMarkdownRemark.edges;
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -20,32 +20,43 @@ class BlogIndex extends React.Component {
         />
         <Bio />
         {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          const {status} = node.frontmatter;
-          return (status && status === 'complete')  ? (
+          const title = node.frontmatter.title || node.fields.slug;
+          const { status } = node.frontmatter;
+          return status && status === "complete" ? (
             <div key={node.fields.slug}>
               <h3
                 style={{
-                  marginBottom: rhythm(1 / 4),
+                  marginBottom: rhythm(1 / 4)
                 }}
               >
-                <Link style={{ boxShadow: `none` }} to={node.frontmatter.path || node.fields.slug}>
+                <Link
+                  style={{ boxShadow: `none` }}
+                  to={node.frontmatter.path || node.fields.slug}
+                >
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date} • {"☕".repeat((node.timeToRead - 1)/5 + 1)} {`${node.timeToRead} min read`}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler || node.excerpt }} />
+              <small>
+                {node.frontmatter.date} •{" "}
+                {"☕".repeat((node.timeToRead - 1) / 5 + 1)}{" "}
+                {`${node.timeToRead} min read`}
+              </small>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: node.frontmatter.spoiler || node.excerpt
+                }}
+              />
             </div>
-          ) : null
+          ) : null;
         })}
 
-        { posts.length === 0 && <p>The fun has not yet begun!</p>}
+        {posts.length === 0 && <p>The fun has not yet begun!</p>}
       </Layout>
-    )
+    );
   }
 }
 
-export default BlogIndex
+export default BlogIndex;
 
 export const pageQuery = graphql`
   query {
@@ -73,4 +84,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from "react";
+import { Link } from "gatsby";
 
-import { rhythm, scale } from '../utils/typography'
+import { rhythm, scale } from "../utils/typography";
 
 class Layout extends React.Component {
-  render () {
-    const { location, title, children } = this.props
-    const rootPath = `${ __PATH_PREFIX__ }/`
-    let header
+  render() {
+    const { location, title, children } = this.props;
+    const rootPath = `${__PATH_PREFIX__}/`;
+    let header;
 
     if (location.pathname === rootPath) {
       header = (
@@ -23,23 +23,22 @@ class Layout extends React.Component {
             style={{
               boxShadow: `none`,
               textDecoration: `none`,
-              color: `inherit`,
+              color: `inherit`
             }}
             to={`/`}
           >
             {title}
           </Link>
         </h1>
-      )
+      );
     } else {
       header = (
         <h3
           style={{
-
             marginTop: 0,
-            display: 'flex',
-            justifyContent: 'space-between',
-            padding: `${ rhythm(1) } 0`,
+            display: "flex",
+            justifyContent: "space-between",
+            padding: `${rhythm(1)} 0`,
             boxShadow: `rgba(0, 0, 0, 0.1) 0px 9px 13px -10px`,
             position: `sticky`,
             top: `0px`,
@@ -50,12 +49,15 @@ class Layout extends React.Component {
           <Link
             style={{
               boxShadow: `none`,
-              textDecoration: `none`,
+              textDecoration: `none`
             }}
             to={`/`}
-          > Home </Link>
+          >
+            {" "}
+            Home{" "}
+          </Link>
         </h3>
-      )
+      );
     }
     return (
       <div
@@ -63,19 +65,19 @@ class Layout extends React.Component {
           marginLeft: `auto`,
           marginRight: `auto`,
           maxWidth: rhythm(24),
-          padding: `0 ${ rhythm(3 / 4) } ${ rhythm(1.5) }`,
+          padding: `0 ${rhythm(3 / 4)} ${rhythm(1.5)}`
         }}
       >
         {header}
         {children}
         <footer>
           © {new Date().getFullYear()} -- with
-          <span style={{ color: 'red' }}>❤</span>
+          <span style={{ color: "red" }}>❤</span>
           from Naga Chaitanya Konada.
         </footer>
       </div>
-    )
+    );
   }
 }
 
-export default Layout
+export default Layout;
