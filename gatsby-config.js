@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `KNC - Blog`,
+    title: `Naga Konada`,
     author: `Naga Chaitanya Konada`,
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
@@ -17,14 +17,14 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
+        path: `${ __dirname }/content/blog`,
         name: `blog`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
+        path: `${ __dirname }/content/assets`,
         name: `assets`,
       },
     },
@@ -47,7 +47,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: "language-",
+              classPrefix: 'language-',
               inlineCodeMarker: `+`
             }
           },

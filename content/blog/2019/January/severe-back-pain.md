@@ -3,7 +3,7 @@ title: The Great Back Pain of 2019
 date: '2019-01-30'
 path: /2019/01/30/the-great-back-pain
 spoiler: The pain was so bad, I thought I would never walk properly again. Also, my first wheel-chair experience at hospital. 😜
-banner: https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/46914965_10217664352136545_8272902311190200320_n.jpg?_nc_cat=102&_nc_ht=scontent-ort2-1.xx&oh=4b051e30687e0bf50b13cdcf99ffc857&oe=5CF4DB65
+banner: ./my-kid-wife-shine.jpg
 status: complete
 ---
 
@@ -63,4 +63,4 @@ So, after the doctor visit on Monday, I decided to give myself some rest this we
 
 > Friends, take care of your backs, don't allow any pressure on your backs while playing with kids or lifting heavy stuff (even kids) and during any daily activity that involves heavy things.
 
-![My Kid, me and my wife](https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/46914965_10217664352136545_8272902311190200320_n.jpg?_nc_cat=102&_nc_ht=scontent-ort2-1.xx&oh=4b051e30687e0bf50b13cdcf99ffc857&oe=5CF4DB65)
+![My Kid, me and my wife](./my-kid-wife-shine.jpg)

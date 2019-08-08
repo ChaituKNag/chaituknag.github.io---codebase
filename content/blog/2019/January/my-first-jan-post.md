@@ -50,4 +50,4 @@ Not to brag, but the latest best thing that happened to my life and family is th
 
 > It continues, life.
 
-![My family group photo](https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/13173817_10208932370362458_8513398534734977768_n.jpg?_nc_cat=104&_nc_ht=scontent-ort2-1.xx&oh=f5c7b18d10744025fdd14a88cecc4b43&oe=5CFB1497)
+![My family group photo](./me-ammu-sowji.jpg)
