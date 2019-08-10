@@ -42,7 +42,8 @@ class Layout extends React.Component {
             boxShadow: `rgba(0, 0, 0, 0.1) 0px 9px 13px -10px`,
             position: `sticky`,
             top: `0px`,
-            background: `white`
+            background: `white`,
+            zIndex: "10"
           }}
         >
           {title}
