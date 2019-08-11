@@ -24,7 +24,9 @@ const Header = ({ isHome = false, title, toggleTheme, theme }) => {
           style={{
             ...scale(1.5),
             marginBottom: rhythm(1.5),
-            paddingTop: rhythm(1.5)
+            paddingTop: rhythm(1.5),
+            fontSize: scale(0.5),
+            lineHeight: scale(0.5)
           }}
           className="home-header"
         >
