@@ -1,0 +1,25 @@
+.bio-box {
+    display: flex;
+    box-shadow: 0 2px 14px -4px rgba(0, 0, 0, .3);
+}
+
+.bio-image {
+    margin-bottom: 0;
+    min-width: 50px;
+    border-radius: 100%;
+}
+
+.bio-author {
+    margin: 0;
+}
+
+.bio-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+.layout-dark .bio-box {
+    box-shadow: 0 2px 14px -4px rgba(255, 255, 255, .3); 
+}

@@ -1,8 +1,10 @@
 .layout {
     background-color: white;
+    transition: background-color .5s;
 }
 
 .layout-dark {
+    transition: background-color .5s;
     background-color: #333;
     color: white;
 }
@@ -11,9 +13,13 @@
     border-color: violet;
 }
 
-.layout-dark a {
+.layout-dark a:not(.social-link) {
     background-image: linear-gradient(to top,#f03b95,#333 100%,#0000 100%,#0000);
     color: #429aff;
+}
+
+.layout-dark a.social-link, .layout a.social-link {
+    background-image: none;
 }
 
 .layout-dark a:hover {

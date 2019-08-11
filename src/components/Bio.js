@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
-
+import "./Bio.css";
 import { rhythm } from "../utils/typography";
 
 const iconStyle = {
@@ -20,69 +20,70 @@ function Bio() {
 
         return (
           <div
+            className="bio-box"
             style={{
-              display: `flex`,
               marginBottom: rhythm(1.5),
-              padding: rhythm(0.8),
-              boxShadow: `0 2px 14px -4px rgba(0, 0, 0, .3)`
+              padding: rhythm(0.8)
             }}
           >
             <Image
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
+              className="bio-image"
               style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`
+                marginRight: rhythm(1 / 2)
               }}
             />
-            <p style={{ margin: 0 }}>
+            <p className="bio-author">
               Personal and technical views of <strong>{author}</strong> <br />
               {` `}
               <a
-                className="no-underline"
+                className={`social-link`}
                 target="_blank"
                 rel="noreferrer"
                 href={`https://twitter.com/${social.twitter}`}
               >
-                <img style={iconStyle} src="/twitter.svg" alt="Twitter" />
+                <img className="bio-icon" src="/twitter.svg" alt="Twitter" />
               </a>
               {` `}
               <a
-                className="no-underline"
+                className={`social-link`}
                 target="_blank"
                 rel="noreferrer"
                 href={`https://github.com/${social.github}`}
               >
-                <img style={iconStyle} src="/github.svg" alt="Github" />
+                <img className="bio-icon" src="/github.svg" alt="Github" />
               </a>
               {` `}
               <a
-                className="no-underline"
+                className={`social-link`}
                 target="_blank"
                 rel="noreferrer"
                 href={`https://www.instagram.com/${social.instagram}`}
               >
-                <img style={iconStyle} src="/instagram.svg" alt="Instagram" />
+                <img
+                  className="bio-icon"
+                  src="/instagram.svg"
+                  alt="Instagram"
+                />
               </a>
               {` `}
               <a
-                className="no-underline"
+                className={`social-link`}
                 target="_blank"
                 rel="noreferrer"
                 href={`https://facebook.com/${social.facebook}`}
               >
-                <img style={iconStyle} src="/facebook.svg" alt="Facebook" />
+                <img className="bio-icon" src="/facebook.svg" alt="Facebook" />
               </a>
               {` `}
               <a
-                className="no-underline"
+                className={`social-link`}
                 target="_blank"
                 rel="noreferrer"
                 href={`https://medium.com/${social.medium}`}
               >
-                <img style={iconStyle} src="/medium.svg" alt="Medium" />
+                <img className="bio-icon" src="/medium.svg" alt="Medium" />
               </a>
             </p>
           </div>
