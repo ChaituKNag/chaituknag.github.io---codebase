@@ -17,6 +17,10 @@
     color: inherit
 }
 
+.layout-dark .home-header .home-header-link {
+    color: white;
+}
+
 .blog-header {
     margin-top: 0;
     display: flex;
