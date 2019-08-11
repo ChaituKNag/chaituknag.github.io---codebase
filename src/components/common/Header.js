@@ -18,7 +18,7 @@ const ThemeButton = ({ theme, toggleTheme }) => {
 
 const Header = ({ isHome = false, title, toggleTheme, theme }) => {
   return (
-    <div>
+    <>
       {isHome && (
         <h1
           style={{
@@ -52,7 +52,7 @@ const Header = ({ isHome = false, title, toggleTheme, theme }) => {
           </span>
         </h3>
       )}
-    </div>
+    </>
   );
 };
 
