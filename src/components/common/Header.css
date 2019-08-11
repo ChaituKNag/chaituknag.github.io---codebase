@@ -1,0 +1,38 @@
+.home-header {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-header-link {
+    box-shadow: none;
+    text-decoration: none;
+    color: inherit
+}
+
+.blog-header {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 9px 13px -10px;
+    position: sticky;
+    top: 0;
+}
+
+.blog-header-link {
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.header-theme-button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.layout-dark .header-theme-button {
+    color: white;
+}

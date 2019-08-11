@@ -1,84 +1,39 @@
 import React from "react";
-import { Link } from "gatsby";
+import Header from "./common/Header";
+import Footer from "./common/Footer";
+import useTheme from "../hooks/useTheme";
 
-import { rhythm, scale } from "../utils/typography";
+import { rhythm } from "../utils/typography";
+import "./Layout.css";
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props;
-    const rootPath = `${__PATH_PREFIX__}/`;
-    let header;
+const Layout = ({ location, title, children }) => {
+  const isHome = location.pathname === `${__PATH_PREFIX__}/`;
+  const [theme, toggleTheme] = useTheme();
 
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-            paddingTop: rhythm(1.5)
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      );
-    } else {
-      header = (
-        <h3
-          style={{
-            marginTop: 0,
-            display: "flex",
-            justifyContent: "space-between",
-            padding: `${rhythm(1)} 0`,
-            boxShadow: `rgba(0, 0, 0, 0.1) 0px 9px 13px -10px`,
-            position: `sticky`,
-            top: `0px`,
-            background: `white`,
-            zIndex: "10"
-          }}
-        >
-          {title}
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`
-            }}
-            to={`/`}
-          >
-            {" "}
-            Home{" "}
-          </Link>
-        </h3>
-      );
-    }
-    return (
+  return (
+    <div className={theme === "dark" ? "layout-dark" : "layout"}>
       <div
+        className={`layout-wrapper`}
         style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
           maxWidth: rhythm(24),
           padding: `0 ${rhythm(3 / 4)} ${rhythm(1.5)}`
         }}
       >
-        {header}
+        {isHome ? (
+          <Header
+            isHome
+            title={title}
+            toggleTheme={toggleTheme}
+            theme={theme}
+          />
+        ) : (
+          <Header title={title} toggleTheme={toggleTheme} theme={theme} />
+        )}
         {children}
-        <footer>
-          © {new Date().getFullYear()} -- with
-          <span style={{ color: "red" }}>❤</span>
-          from Naga Chaitanya Konada.
-        </footer>
+        <Footer />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Layout;

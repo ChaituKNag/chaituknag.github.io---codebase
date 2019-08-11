@@ -15,12 +15,6 @@ Alton.overrideThemeStyles = () => {
     "a:hover": {
       backgroundSize: "100% 100%"
     },
-    "a.no-underline": {
-      background: "none"
-    },
-    "a.no-underline:hover": {
-      background: "none"
-    },
     p: {
       lineHeight: 1.6
     }
