@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 export default function useTheme() {
   const [theme, setTheme] = useState(
-    window.localStorage.getItem("theme") || "light"
+    (typeof window !== "undefined" && window.localStorage.getItem("theme")) ||
+      "light"
   );
 
   useEffect(() => {
