@@ -1,12 +1,14 @@
 .layout {
     background-color: white;
     transition: background-color .5s;
+    min-height: 100vh;
 }
 
 .layout-dark {
     transition: background-color .5s;
     background-color: #333;
     color: white;
+    min-height: 100vh;
 }
 .layout-dark blockquote {
     color: white;
