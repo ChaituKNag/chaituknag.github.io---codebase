@@ -5,7 +5,7 @@ Alton.overrideThemeStyles = () => {
   return {
     a: {
       color: "#1c87ff",
-      background: "linear-gradient(to top,#e896bf,#fff 100%,#0000 100%,#0000)",
+      // background: "linear-gradient(to top,#e896bf,#fff 100%,#0000 100%,#0000)",
       backgroundSize: "100% 30%",
       backgroundPosition: "center 100%",
       backgroundRepeat: "no-repeat",
