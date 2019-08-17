@@ -14,13 +14,24 @@ Alton.overrideThemeStyles = () => {
     },
     "a:hover": {
       backgroundSize: "100% 100%"
-    },
-    p: {
-      lineHeight: 1.6
     }
   };
 };
 
+Alton.googleFonts = [
+  {
+    name: "Passero One",
+    styles: ["400"]
+  },
+  {
+    name: "Ubuntu",
+    styles: ["400", "400i", "700", "700i"]
+  }
+];
+
+Alton.headerFontFamily = ["Passero One", "serif"];
+Alton.bodyFontFamily = ["Ubuntu", "sans-serif"];
+Alton.baseLineHeight = 2;
 // const typography = new Typography(Wordpress2016)
 const typography = new Typography(Alton);
 
