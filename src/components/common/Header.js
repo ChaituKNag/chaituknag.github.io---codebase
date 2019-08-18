@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "gatsby";
-import { rhythm, scale, themedAnchorUnderline } from "../../utils/typography";
+import { rhythm, themedAnchorUnderline } from "../../utils/typography";
 import { ThemeContext } from "../../utils/theme-context";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const ThemeButton = styled.button`
   background: none;
   border: none;
-  outline: none;
   cursor: pointer;
   font-size: 20px;
   color: ${({ theme }) => (theme === "dark" ? "#fff" : "inherit")};
