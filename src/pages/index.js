@@ -7,9 +7,8 @@ import SEO from "../components/seo";
 import { rhythm } from "../utils/typography";
 import styled, { css } from "styled-components";
 import { ThemeContext } from "../utils/theme-context";
-import useTheme from "../hooks/useTheme";
 
-const BlogListSection = styled.div`
+const StyledBlogListSection = styled.div`
   a {
     background-image: ${props =>
       props.theme === "dark"
@@ -23,12 +22,52 @@ const BlogListSection = styled.div`
         : css`linear-gradient(to top,#e896bf,#fff 100%,#0000 100%,#0000)
     `};
     color: #429aff;
+    transition: background-image 0.5s;
   }
 `;
 
-const BlogIndex = ({ data, location }) => {
-  const [theme] = useTheme();
+const BlogListHeader = styled.h3`
+  margin-bottom: ${rhythm(1 / 4)};
+`;
 
+const BlogListHeaderLink = styled(Link)`
+  box-shadow: none;
+`;
+
+const BlogListSection = ({ posts }) => {
+  const { theme } = useContext(ThemeContext);
+  return (
+    <StyledBlogListSection theme={theme}>
+      {posts.map(({ node }) => {
+        const title = node.frontmatter.title || node.fields.slug;
+        const { status } = node.frontmatter;
+        return status && status === "complete" ? (
+          <div key={node.fields.slug}>
+            <BlogListHeader>
+              <BlogListHeaderLink
+                to={node.frontmatter.path || node.fields.slug}
+              >
+                {title}
+              </BlogListHeaderLink>
+            </BlogListHeader>
+            <small>
+              {node.frontmatter.date} •{" "}
+              {"☕".repeat((node.timeToRead - 1) / 5 + 1)}{" "}
+              {`${node.timeToRead} min read`}
+            </small>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: node.frontmatter.spoiler || node.excerpt
+              }}
+            />
+          </div>
+        ) : null;
+      })}
+    </StyledBlogListSection>
+  );
+};
+
+const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
@@ -39,39 +78,7 @@ const BlogIndex = ({ data, location }) => {
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
       <Bio />
-      <BlogListSection theme={theme}>
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug;
-          const { status } = node.frontmatter;
-          return status && status === "complete" ? (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4)
-                }}
-              >
-                <Link
-                  style={{ boxShadow: `none` }}
-                  to={node.frontmatter.path || node.fields.slug}
-                >
-                  {title}
-                </Link>
-              </h3>
-              <small>
-                {node.frontmatter.date} •{" "}
-                {"☕".repeat((node.timeToRead - 1) / 5 + 1)}{" "}
-                {`${node.timeToRead} min read`}
-              </small>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.spoiler || node.excerpt
-                }}
-              />
-            </div>
-          ) : null;
-        })}
-      </BlogListSection>
-
+      <BlogListSection posts={posts} />
       {posts.length === 0 && <p>The fun has not yet begun!</p>}
     </Layout>
   );
