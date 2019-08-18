@@ -4,23 +4,13 @@ import { Link, graphql } from "gatsby";
 import Bio from "../components/Bio";
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
-import { rhythm } from "../utils/typography";
+import { rhythm, themedAnchorUnderline } from "../utils/typography";
 import styled, { css } from "styled-components";
 import { ThemeContext } from "../utils/theme-context";
 
 const StyledBlogListSection = styled.div`
   a {
-    background-image: ${props =>
-      props.theme === "dark"
-        ? css`linear-gradient(
-      to top,
-      #f03b95,
-      #333 100%,
-      #0000 100%,
-      #0000
-    )`
-        : css`linear-gradient(to top,#e896bf,#fff 100%,#0000 100%,#0000)
-    `};
+    ${({ theme }) => themedAnchorUnderline(theme)}
     color: #429aff;
     transition: background-image 0.5s;
   }

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
-import "./Bio.css";
 import { rhythm } from "../utils/typography";
 import styled, { css } from "styled-components";
 import { ThemeContext } from "../utils/theme-context";

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "gatsby";
-import { rhythm, scale } from "../../utils/typography";
+import { rhythm, scale, themedAnchorUnderline } from "../../utils/typography";
 import { ThemeContext } from "../../utils/theme-context";
 import styled, { css } from "styled-components";
 
@@ -21,8 +21,6 @@ const HomeHeader = styled.h1`
   transition: background-color 0.5s;
   margin-bottom: ${rhythm(1.5)};
   padding-top: ${rhythm(1.5)};
-  font-size: ${scale(0.5)};
-  line-height: ${scale(0.5)};
 `;
 
 const SingleBlogHeader = styled.h3`
@@ -41,6 +39,7 @@ const SingleBlogHeader = styled.h3`
 const BlogHeaderLink = styled(Link)`
   box-shadow: none;
   text-decoration: none;
+  ${({ theme }) => themedAnchorUnderline(theme)}
 `;
 
 const Header = ({ isHome = false, title }) => {
@@ -57,7 +56,9 @@ const Header = ({ isHome = false, title }) => {
       )}
       {!isHome && (
         <SingleBlogHeader theme={theme}>
-          <Link to={`/`}>{title}</Link>
+          <BlogHeaderLink theme={theme} to={`/ `}>
+            {title}
+          </BlogHeaderLink>
           <span>
             <ThemeButton
               theme={theme}

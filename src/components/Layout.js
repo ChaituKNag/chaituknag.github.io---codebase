@@ -5,7 +5,6 @@ import useTheme from "../hooks/useTheme";
 import { ThemeContext } from "../utils/theme-context";
 
 import { rhythm } from "../utils/typography";
-import "./Layout.css";
 import styled, { css } from "styled-components";
 
 const LayoutWrapper = styled.div`
