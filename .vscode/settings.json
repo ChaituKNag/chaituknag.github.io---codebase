@@ -1,6 +1,6 @@
 {
     "workbench.colorTheme": "Abyss",
-    "workbench.iconTheme": "vs-minimal",
+    "workbench.iconTheme": "vscode-icons",
     "eslint.autoFixOnSave": true,
     "eslint.alwaysShowStatus": true,
     // "editor.formatOnSave": false,
