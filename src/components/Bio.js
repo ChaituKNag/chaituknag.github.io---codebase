@@ -11,8 +11,8 @@ const BioBox = styled.div`
     theme === "dark"
       ? "0 2px 14px -4px rgba(255, 255, 255, .3)"
       : "0 2px 14px -4px rgba(0, 0, 0, .3)"};
-  margin-bottom: ${rhythm(1.5)}
-  padding: ${rhythm(0.8)}
+  margin-bottom: ${rhythm(1.5)};
+  padding: ${rhythm(0.8)};
 `;
 
 const BioImage = styled(Image)`

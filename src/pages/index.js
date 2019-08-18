@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link, graphql } from "gatsby";
 
 import Bio from "../components/Bio";
