@@ -16,7 +16,7 @@ const StyledBlogPostInfo = styled.p`
   border-bottom: 1px dotted
     ${({ theme }) => (theme === "dark" ? "#fff" : "#333")};
   padding-top: ${rhythm(0)};
-  font-size: ${rhythm(0.6)};
+  font-size: ${rhythm(0.5)};
 `;
 
 const StyledHr = styled.hr`
