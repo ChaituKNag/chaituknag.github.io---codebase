@@ -1,58 +1,73 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "gatsby";
+import { rhythm, themedAnchorUnderline } from "../../utils/typography";
+import { ThemeContext } from "../../utils/theme-context";
+import styled from "styled-components";
 
-import { rhythm, scale } from "../../utils/typography";
-import "./Header.css";
+const ThemeButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: ${({ theme }) => (theme === "dark" ? "#fff" : "inherit")};
+`;
 
-const ThemeButton = ({ theme, toggleTheme }) => {
-  return (
-    <button
-      className="header-theme-button"
-      onClick={toggleTheme}
-      title="Change Theme"
-    >
-      {theme === "dark" ? "Light - 🌞" : "Dark - 🌑"}
-    </button>
-  );
-};
+const HomeHeader = styled.h1`
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.5s;
+  margin-bottom: ${rhythm(1.5)};
+  padding-top: ${rhythm(1.5)};
+`;
 
-const Header = ({ isHome = false, title, toggleTheme, theme }) => {
+const SingleBlogHeader = styled.h3`
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 9px 13px -10px;
+  position: sticky;
+  top: 0;
+  background-color: ${({ theme }) => (theme === "dark" ? "#333" : "#fff")};
+  transition: background-color 0.5s;
+  z-index: 10;
+  padding: ${rhythm(1)} 0;
+`;
+
+const BlogHeaderLink = styled(Link)`
+  box-shadow: none;
+  text-decoration: none;
+  ${({ theme }) => themedAnchorUnderline(theme)}
+`;
+
+const Header = ({ isHome = false, title }) => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <>
       {isHome && (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            paddingTop: rhythm(1.5),
-            fontSize: scale(0.5),
-            lineHeight: scale(0.5)
-          }}
-          className="home-header"
-        >
-          <Link className="home-header-link" to={`/`}>
-            {title}
-          </Link>
-          <ThemeButton theme={theme} toggleTheme={toggleTheme} />
-        </h1>
+        <HomeHeader>
+          {title}
+          <ThemeButton theme={theme} onClick={toggleTheme} title="Change Theme">
+            {theme === "dark" ? "Light - 🌞" : "Dark - 🌑"}
+          </ThemeButton>
+        </HomeHeader>
       )}
       {!isHome && (
-        <h3
-          className="blog-header"
-          style={{
-            padding: `${rhythm(1)} 0`
-          }}
-        >
-          {title}
+        <SingleBlogHeader theme={theme}>
+          <BlogHeaderLink theme={theme} to={`/ `}>
+            {title}
+          </BlogHeaderLink>
           <span>
-            <ThemeButton theme={theme} toggleTheme={toggleTheme} />
-            {` | `}
-            <Link to={`/`} className="blog-header-link">
-              {" "}
-              Home{" "}
-            </Link>
+            <ThemeButton
+              theme={theme}
+              onClick={toggleTheme}
+              title="Change Theme"
+            >
+              {theme === "dark" ? "Light - 🌞" : "Dark - 🌑"}
+            </ThemeButton>
           </span>
-        </h3>
+        </SingleBlogHeader>
       )}
     </>
   );

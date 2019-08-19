@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+import styled, { css } from "styled-components";
+import { ThemeContext } from "../../utils/theme-context";
+
+const RedHeart = styled.span`
+  color: red;
+`;
+
+const StyledHr = styled.hr`
+  ${({ theme }) =>
+    theme === "dark" &&
+    css`
+      background-color: #fff;
+    `}
+`;
 
 const Footer = () => {
+  const { theme } = useContext(ThemeContext);
   return (
     <div>
+      <StyledHr theme={theme} />
       <footer>
         © {new Date().getFullYear()} -- with
-        <span style={{ color: "red" }}>❤</span>
-        from Naga Chaitanya Konada.
+        <RedHeart theme={theme}>{` ❤ `}</RedHeart>
+        from K.N.C
       </footer>
     </div>
   );

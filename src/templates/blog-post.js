@@ -1,75 +1,126 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, graphql } from "gatsby";
 
 import Bio from "../components/Bio";
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
-import { rhythm, scale } from "../utils/typography";
+import { rhythm, themedAnchorUnderline } from "../utils/typography";
+import styled, { css } from "styled-components";
+import { ThemeContext } from "../utils/theme-context";
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark;
-    const siteTitle = this.props.data.site.siteMetadata.title;
-    const { previous, next } = this.props.pageContext;
+const StyledBlogPostInfo = styled.p`
+  display: inline-block;
+  margin-bottom: ${rhythm(1)};
+  margin-top: ${rhythm(0)};
+  border-top: 1px dotted ${({ theme }) => (theme === "dark" ? "#fff" : "#333")};
+  border-bottom: 1px dotted
+    ${({ theme }) => (theme === "dark" ? "#fff" : "#333")};
+  padding-top: ${rhythm(0)};
+  font-size: ${rhythm(0.5)};
+`;
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.spoiler || post.excerpt}
-          banner={post.frontmatter.banner}
-        />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1)
-          }}
-        >
-          {post.frontmatter.date}•{"☕".repeat((post.timeToRead - 1) / 5 + 1)}{" "}
-          {`${post.timeToRead} min read`}
-        </p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1)
-          }}
-        />
-        <Bio />
+const StyledHr = styled.hr`
+  margin-bottom: ${rhythm(1)};
+  ${({ theme }) =>
+    theme === "dark" &&
+    css`
+      background-color: #fff;
+    `}
+`;
 
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0
-          }}
-        >
-          <li>
-            {previous && (
-              <Link
-                to={previous.frontmatter.path || previous.fields.slug}
-                rel="prev"
-              >
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.frontmatter.path || next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </Layout>
-    );
+const BlogLeadLinkList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+`;
+
+const StyledBlogPostContent = styled.div`
+  a {
+    ${({ theme }) => themedAnchorUnderline(theme)}
   }
-}
+`;
+
+const BlogLeadLinkItem = styled(Link)`
+  ${({ theme }) => themedAnchorUnderline(theme)}
+`;
+
+const BlogPostInfo = ({ children }) => {
+  const { theme } = useContext(ThemeContext);
+
+  return <StyledBlogPostInfo theme={theme}>{children}</StyledBlogPostInfo>;
+};
+
+const BlogPostContent = ({ post, theme }) => {
+  return (
+    <>
+      <StyledBlogPostContent
+        theme={theme}
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      />
+      <StyledHr theme={theme} />
+    </>
+  );
+};
+
+const BlogPostWrapper = ({ post, previous, next }) => {
+  const { theme } = useContext(ThemeContext);
+  return (
+    <>
+      <h1>{post.frontmatter.title}</h1>
+      <BlogPostInfo>
+        {post.frontmatter.date} {` • `}
+        {"☕".repeat((post.timeToRead - 1) / 5 + 1)}{" "}
+        {`${post.timeToRead} min read`}
+      </BlogPostInfo>
+      <BlogPostContent post={post} theme={theme} />
+      <Bio />
+
+      <BlogLeadLinkList>
+        <li>
+          {previous && (
+            <BlogLeadLinkItem
+              theme={theme}
+              to={previous.frontmatter.path || previous.fields.slug}
+              rel="prev"
+            >
+              ← {previous.frontmatter.title}
+            </BlogLeadLinkItem>
+          )}
+        </li>
+        <li>
+          {next && (
+            <BlogLeadLinkItem
+              theme={theme}
+              to={next.frontmatter.path || next.fields.slug}
+              rel="next"
+            >
+              {next.frontmatter.title} →
+            </BlogLeadLinkItem>
+          )}
+        </li>
+      </BlogLeadLinkList>
+    </>
+  );
+};
+
+const BlogPostTemplate = ({ data, pageContext, location }) => {
+  const post = data.markdownRemark;
+  const siteTitle = data.site.siteMetadata.title;
+  const { previous, next } = pageContext;
+
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO
+        title={post.frontmatter.title}
+        description={post.frontmatter.spoiler || post.excerpt}
+        banner={post.frontmatter.banner}
+      />
+      <BlogPostWrapper post={post} previous={previous} next={next} />
+    </Layout>
+  );
+};
 
 export default BlogPostTemplate;
 
