@@ -85,6 +85,12 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`
       }
     },
-    `gatsby-plugin-styled-components`
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-source-dev`,
+      options: {
+        username: "devteam"
+      }
+    }
   ]
 };
