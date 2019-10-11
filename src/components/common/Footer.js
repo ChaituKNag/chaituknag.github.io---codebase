@@ -7,21 +7,18 @@ const RedHeart = styled.span`
 `;
 
 const StyledHr = styled.hr`
-  ${({ theme }) =>
-    theme === "dark" &&
-    css`
-      background-color: #fff;
-    `}
+  body.dark & {
+    background-color: #fff;
+  }
 `;
 
 const Footer = () => {
-  const { theme } = useContext(ThemeContext);
   return (
     <div>
-      <StyledHr theme={theme} />
+      <StyledHr />
       <footer>
         © {new Date().getFullYear()} -- with
-        <RedHeart theme={theme}>{` ❤ `}</RedHeart>
+        <RedHeart>{` ❤ `}</RedHeart>
         from K.N.C
       </footer>
     </div>

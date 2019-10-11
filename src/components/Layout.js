@@ -5,29 +5,35 @@ import useTheme from "../hooks/useTheme";
 import { ThemeContext } from "../utils/theme-context";
 
 import { rhythm } from "../utils/typography";
-import styled, { css } from "styled-components";
+import styled, { css, createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
+  body {
+    background-color: var(--theme-background);
+  }
+`;
 
 const LayoutWrapper = styled.div`
   min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  background-color: ${({ theme }) => (theme === "dark" ? "#333" : "#fff")};
-  color: ${({ theme }) => (theme === "dark" ? "#fff" : "inherit")};
-  transition: background-color 0.5s;
-  ${({ theme }) => {
-    if (theme === "dark") {
-      return css`
-        blockquote {
-          color: #fff;
-          border-color: violet;
-        }
+  background-color: #fff;
 
-        a:hover {
-          color: #fff;
-        }
-      `;
+  color: inherit;
+  transition: background-color 0.1s;
+  body.dark & {
+    background-color: #333;
+    color: #fff;
+
+    blockquote {
+      color: #fff;
+      border-color: violet;
     }
-  }}
+
+    a:hover {
+      color: #fff;
+    }
+  }
 `;
 
 const LayoutContainer = styled.div`
@@ -43,6 +49,7 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <GlobalStyles />
       <LayoutWrapper theme={theme}>
         <LayoutContainer>
           <Header title={title} isHome={isHome} />

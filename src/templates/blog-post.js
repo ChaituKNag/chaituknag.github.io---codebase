@@ -21,11 +21,10 @@ const StyledBlogPostInfo = styled.p`
 
 const StyledHr = styled.hr`
   margin-bottom: ${rhythm(1)};
-  ${({ theme }) =>
-    theme === "dark" &&
-    css`
-      background-color: #fff;
-    `}
+
+  body.dark & {
+    background-color: #fff;
+  }
 `;
 
 const BlogLeadLinkList = styled.ul`

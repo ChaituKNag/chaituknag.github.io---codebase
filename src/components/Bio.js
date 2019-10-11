@@ -7,12 +7,13 @@ import { ThemeContext } from "../utils/theme-context";
 
 const BioBox = styled.div`
   display: flex;
-  box-shadow: ${({ theme }) =>
-    theme === "dark"
-      ? "0 2px 14px -4px rgba(255, 255, 255, .3)"
-      : "0 2px 14px -4px rgba(0, 0, 0, .3)"};
+  box-shadow: 0 2px 14px -4px rgba(0, 0, 0, 0.3);
   margin-bottom: ${rhythm(1.5)};
   padding: ${rhythm(0.8)};
+
+  body.dark & {
+    box-shadow: 0 2px 14px -4px rgba(255, 255, 255, 0.3);
+  }
 `;
 
 const BioImage = styled(Image)`
@@ -37,7 +38,6 @@ const BioIcon = styled.img`
 `;
 
 function Bio() {
-  const { theme } = useContext(ThemeContext);
   return (
     <StaticQuery
       query={bioQuery}
@@ -45,7 +45,7 @@ function Bio() {
         const { author, social } = data.site.siteMetadata;
 
         return (
-          <BioBox theme={theme}>
+          <BioBox>
             <BioImage fixed={data.avatar.childImageSharp.fixed} alt={author} />
             <BioAuthor>
               Personal and technical views of <strong>{author}</strong> <br />

@@ -9,7 +9,10 @@ const ThemeButton = styled.button`
   border: none;
   cursor: pointer;
   font-size: 20px;
-  color: ${({ theme }) => (theme === "dark" ? "#fff" : "inherit")};
+  color: inherit;
+  body.dark & {
+    color: #fff;
+  }
 `;
 
 const HomeHeader = styled.h1`
@@ -17,7 +20,7 @@ const HomeHeader = styled.h1`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.5s;
+  transition: background-color 0.1s;
   margin-bottom: ${rhythm(1.5)};
   padding-top: ${rhythm(1.5)};
 `;
@@ -29,16 +32,35 @@ const SingleBlogHeader = styled.h3`
   box-shadow: rgba(0, 0, 0, 0.1) 0px 9px 13px -10px;
   position: sticky;
   top: 0;
-  background-color: ${({ theme }) => (theme === "dark" ? "#333" : "#fff")};
-  transition: background-color 0.5s;
+  background-color: "#fff";
+  transition: background-color 0.1s;
   z-index: 10;
   padding: ${rhythm(1)} 0;
+  body.dark & {
+    background-color: #333;
+  }
 `;
 
 const BlogHeaderLink = styled(Link)`
   box-shadow: none;
   text-decoration: none;
-  ${({ theme }) => themedAnchorUnderline(theme)}
+  background-image: linear-gradient(
+    to top,
+    #e896bf,
+    #fff 100%,
+    #0000 100%,
+    #0000
+  );
+
+  body.dark & {
+    background-image: linear-gradient(
+      to top,
+      #f03b95,
+      #333 100%,
+      #0000 100%,
+      #0000
+    );
+  }
 `;
 
 const Header = ({ isHome = false, title }) => {
@@ -55,9 +77,7 @@ const Header = ({ isHome = false, title }) => {
       )}
       {!isHome && (
         <SingleBlogHeader theme={theme}>
-          <BlogHeaderLink theme={theme} to={`/ `}>
-            {title}
-          </BlogHeaderLink>
+          <BlogHeaderLink to={`/ `}>{title}</BlogHeaderLink>
           <span>
             <ThemeButton
               theme={theme}

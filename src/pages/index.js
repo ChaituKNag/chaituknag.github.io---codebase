@@ -10,9 +10,25 @@ import { ThemeContext } from "../utils/theme-context";
 
 const StyledBlogListSection = styled.div`
   a {
-    ${({ theme }) => themedAnchorUnderline(theme)}
+    background-image: linear-gradient(
+      to top,
+      #e896bf,
+      #fff 100%,
+      #0000 100%,
+      #0000
+    );
+
+    body.dark & {
+      background-image: linear-gradient(
+        to top,
+        #f03b95,
+        #333 100%,
+        #0000 100%,
+        #0000
+      );
+    }
     color: #429aff;
-    transition: background-image 0.5s;
+    transition: background-image 0.1s;
   }
 `;
 
@@ -25,9 +41,8 @@ const BlogListHeaderLink = styled(Link)`
 `;
 
 const BlogListSection = ({ posts }) => {
-  const { theme } = useContext(ThemeContext);
   return (
-    <StyledBlogListSection theme={theme}>
+    <StyledBlogListSection>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
         const { status } = node.frontmatter;
