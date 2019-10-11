@@ -8,14 +8,22 @@ export default function useTheme() {
   );
   console.log("actualTheme", theme);
 
+  const toggleBodyClass = mode =>
+    mode === "dark"
+      ? document.body.classList.add("dark")
+      : document.body.classList.remove("dark");
+
   useEffect(() => {
-    setTheme(window.localStorage.getItem("theme") || "light");
+    const mode = window.localStorage.getItem("theme");
+    setTheme(mode || "light");
+    toggleBodyClass(mode);
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    window.localStorage.setItem("theme", newTheme);
+    const mode = theme === "dark" ? "light" : "dark";
+    setTheme(mode);
+    window.localStorage.setItem("theme", mode);
+    toggleBodyClass(mode);
   };
 
   return [theme, toggleTheme];
