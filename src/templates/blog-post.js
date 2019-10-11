@@ -115,7 +115,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.spoiler || post.excerpt}
-        banner={post.frontmatter.bannerUrl}
       />
       <BlogPostWrapper post={post} previous={previous} next={next} />
     </Layout>
@@ -140,7 +139,6 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         spoiler
-        bannerUrl
       }
       timeToRead
     }

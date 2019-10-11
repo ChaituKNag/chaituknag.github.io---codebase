@@ -74,7 +74,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/knc-logo.png`
+        icon: `content/assets/burning-knc.png`
       }
     },
     `gatsby-plugin-offline`,
