@@ -3,7 +3,7 @@ title: The Great Back Pain of 2019
 date: '2019-01-30'
 path: /2019/01/30/the-great-back-pain
 spoiler: The pain was so bad, I thought I would never walk properly again. Also, my first wheel-chair experience at hospital. 😜
-banner: ./my-kid-wife-shine.jpg
+bannerUrl: ./my-kid-wife-shine.jpg
 status: complete
 ---
 

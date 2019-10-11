@@ -3,7 +3,7 @@ title: What is Sushupthi (सुषुप्ति)
 date: '2019-08-10'
 path: /2019/08/10/what-is-sushupthi
 spoiler: I portrait my understanding of the perfection of mind as Indian Yogis did!
-banner: https://images.unsplash.com/photo-1530847887473-36dbaf586122?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80
+bannerUrl: https://images.unsplash.com/photo-1530847887473-36dbaf586122?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80
 status: complete
 ---
 

@@ -3,7 +3,7 @@ title: The Well Grounded Expert of Life
 date: '2019-02-24'
 path: /2019/02/24/the-well-grounded-expert
 spoiler: As I grew in my career as a professional, things seemed to go as planned, or did they?!!🤔
-banner: https://images.unsplash.com/38/awhCbhLqRceCdjcPQUnn_IMG_0249.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80
+bannerUrl: https://images.unsplash.com/38/awhCbhLqRceCdjcPQUnn_IMG_0249.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80
 status: complete
 ---
 
