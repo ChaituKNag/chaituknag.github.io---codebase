@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { isBrowser } from "../utils/";
 export default function useTheme() {
+  const localTheme = isBrowser() && window.localStorage.getItem("theme");
+  console.log("localTheme", localTheme);
   const [theme, setTheme] = useState(
-    typeof window !== "undefined" && window.localStorage.getItem("theme")
-      ? window.localStorage.getItem("theme")
-      : "light"
+    localTheme ? window.localStorage.getItem("theme") : "light"
   );
+  console.log("actualTheme", theme);
 
   useEffect(() => {
     setTheme(window.localStorage.getItem("theme") || "light");
