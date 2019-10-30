@@ -1,6 +1,9 @@
 {
   "name": "gatsby-starter-blog",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "A starter for a blog powered by Gatsby and Markdown",
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
@@ -8,6 +11,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "portfolio-theme": "*",
     "babel-plugin-styled-components": "1.10.6",
     "gatsby": "^2.13.50",
     "gatsby-image": "^2.2.8",

@@ -14,6 +14,7 @@ module.exports = {
     }
   },
   plugins: [
+    `portfolio-theme`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
