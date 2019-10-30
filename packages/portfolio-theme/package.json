@@ -13,6 +13,9 @@
     "gatsby": "2.17.7"
   },
   "dependencies": {
-    "gatsby-plugin-page-creator": "2.1.28"
+    "babel-plugin-styled-components": "1.10.6",
+    "gatsby-plugin-page-creator": "2.1.28",
+    "gatsby-plugin-styled-components": "3.1.11",
+    "styled-components": "4.4.0"
   }
 }
