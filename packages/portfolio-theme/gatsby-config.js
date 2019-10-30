@@ -1,10 +1,10 @@
 module.exports = {
-    plugins: [
-        {
-            resolve: `gatsby-plugin-page-creator`,
-            options: {
-                path: `${__dirname}/pages`
-            }
-        }
-    ]
+  plugins: [
+    {
+      resolve: `gatsby-plugin-page-creator`,
+      options: {
+        path: `${__dirname}/pages`
+      }
+    }
+  ]
 };
