@@ -12,6 +12,8 @@ const AboutMe = () => {
     <AboutMeSection>
       <SubHeader>About Me</SubHeader>
       <GradientButton>Web Developer</GradientButton>
+      <GradientButton>Proud Father</GradientButton>
+      <GradientButton>Human Being</GradientButton>
     </AboutMeSection>
   );
 };
