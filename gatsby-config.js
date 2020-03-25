@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Naga Konada`,
+    title: `Naga Chaitanya Konada`,
     author: `Naga Chaitanya Konada`,
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
@@ -74,7 +74,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/burning-knc.png`
+        icon: `content/assets/smiley-with-coat-logo.png`
       }
     },
     {

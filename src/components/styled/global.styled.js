@@ -8,9 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         color: ${props => props.theme.fg};
         font-family: "Fira Sans", sans-serif;
 
-        // @media screen and (max-width: ${props => props.theme.breaks.sm}) {
-        //     padding: 20px;
-        // }
+        
     }
 
     html, body {
@@ -19,5 +17,12 @@ export const GlobalStyle = createGlobalStyle`
 
     img {
         max-width: 100%;
+    }
+
+    blockquote {
+        border-left: 5px solid ${props => props.theme.primary};
+        margin-left: 0;
+        padding-left: 1rem;
+        font-style: italic;
     }
 `;

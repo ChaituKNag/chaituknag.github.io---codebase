@@ -10,14 +10,9 @@ import { SectionHeader } from "../components/styled/headings.styled";
 import { FullWidthDiv, SingleColumn } from "../components/styled/divs.styled";
 import { InternalLink } from "../components/styled/links.styled";
 
-const StyledBlogListSection = styled.div`
-  padding: 3rem 0;
-`;
-
-const BlogListHeader = styled.h3``;
-
-const BlogListHeaderLink = styled(Link)`
-  box-shadow: none;
+const BlogListHeader = styled.h3`
+  margin-top: 2rem;
+  margin-bottom: 0;
 `;
 
 const BlogListSection = ({ posts }) => {

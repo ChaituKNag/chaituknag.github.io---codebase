@@ -1,22 +1,22 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+import { FullWidthDiv, SingleColumn } from "../styled/divs.styled";
 
 const RedHeart = styled.span`
   color: red;
 `;
 
-const StyledHr = styled.hr``;
-
 const Footer = () => {
   return (
-    <div>
-      <StyledHr />
-      <footer>
-        © {new Date().getFullYear()} -- with
-        <RedHeart>{` ❤ `}</RedHeart>
-        from K.N.C
-      </footer>
-    </div>
+    <footer>
+      <FullWidthDiv bg2>
+        <SingleColumn>
+          © {new Date().getFullYear()} -- with
+          <RedHeart>{` ❤ `}</RedHeart>
+          from K.N.C
+        </SingleColumn>
+      </FullWidthDiv>
+    </footer>
   );
 };
 

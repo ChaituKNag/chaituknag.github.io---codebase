@@ -65,7 +65,7 @@ function Bio() {
                   />
                 </BioImageBox>
                 <div>
-                  {`Personal and technical views of  `}&nbsp;
+                  {`Personal blog of`}&nbsp;
                   <strong>{author}</strong>
                 </div>
               </SingleColumn>

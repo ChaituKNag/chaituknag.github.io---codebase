@@ -9,7 +9,7 @@ export const FullWidthDiv = styled.div`
 export const SingleColumn = styled.div`
   max-width: ${props => props.theme.breaks.md};
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 30px;
   display: ${props => (props.flex ? "flex" : "block")};
   align-items: center;
   justify-content: ${props => props.justify || "left"};
