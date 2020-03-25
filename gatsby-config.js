@@ -77,6 +77,23 @@ module.exports = {
         icon: `content/assets/burning-knc.png`
       }
     },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Fira Sans`,
+            variants: [`400`, `600`, `700`],
+            display: `swap`
+          },
+
+          {
+            family: `Luckiest Guy`,
+            display: `swap`
+          }
+        ]
+      }
+    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`
