@@ -4,7 +4,7 @@ module.exports = {
     author: `Naga Chaitanya Konada`,
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
-    banner: `content/assets/profile-pic.jpg`,
+    banner: `content/assets/profile-pic.jpeg`,
     social: {
       twitter: `itsKNC`,
       github: `ChaituKNag`,
@@ -88,7 +88,7 @@ module.exports = {
           },
 
           {
-            family: `Luckiest Guy`,
+            family: `Gabriela`,
             display: `swap`
           }
         ]

@@ -6,19 +6,11 @@ import Layout from "../components/Layout";
 import SEO from "../components/seo";
 
 import styled from "styled-components";
+import { SectionHeader } from "../components/styled/headings.styled";
+import { FullWidthDiv, SingleColumn } from "../components/styled/divs.styled";
 
 const StyledBlogListSection = styled.div`
-  a {
-    background-image: linear-gradient(
-      to top,
-      #e896bf,
-      #fff 100%,
-      #0000 100%,
-      #0000
-    );
-    color: #429aff;
-    transition: background-image 0.5s;
-  }
+  padding: 3rem 0;
 `;
 
 const BlogListHeader = styled.h3``;
@@ -29,33 +21,36 @@ const BlogListHeaderLink = styled(Link)`
 
 const BlogListSection = ({ posts }) => {
   return (
-    <StyledBlogListSection>
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug;
-        const { status } = node.frontmatter;
-        return status && status === "complete" ? (
-          <div key={node.fields.slug}>
-            <BlogListHeader>
-              <BlogListHeaderLink
-                to={node.frontmatter.path || node.fields.slug}
-              >
-                {title}
-              </BlogListHeaderLink>
-            </BlogListHeader>
-            <small>
-              {node.frontmatter.date} •{" "}
-              {"☕".repeat((node.timeToRead - 1) / 5 + 1)}{" "}
-              {`${node.timeToRead} min read`}
-            </small>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: node.frontmatter.spoiler || node.excerpt
-              }}
-            />
-          </div>
-        ) : null;
-      })}
-    </StyledBlogListSection>
+    <FullWidthDiv>
+      <SingleColumn>
+        <SectionHeader center>All Blog Posts</SectionHeader>
+        {posts.map(({ node }) => {
+          const title = node.frontmatter.title || node.fields.slug;
+          const { status } = node.frontmatter;
+          return status && status === "complete" ? (
+            <div key={node.fields.slug}>
+              <BlogListHeader>
+                <BlogListHeaderLink
+                  to={node.frontmatter.path || node.fields.slug}
+                >
+                  {title}
+                </BlogListHeaderLink>
+              </BlogListHeader>
+              <small>
+                {node.frontmatter.date} •{" "}
+                {"☕".repeat((node.timeToRead - 1) / 5 + 1)}{" "}
+                {`${node.timeToRead} min read`}
+              </small>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: node.frontmatter.spoiler || node.excerpt
+                }}
+              />
+            </div>
+          ) : null;
+        })}
+      </SingleColumn>
+    </FullWidthDiv>
   );
 };
 
