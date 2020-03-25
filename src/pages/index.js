@@ -1,33 +1,35 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, graphql } from "gatsby";
 
 import Bio from "../components/Bio";
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
-import { rhythm, themedAnchorUnderline } from "../utils/typography";
-import styled, { css } from "styled-components";
-import { ThemeContext } from "../utils/theme-context";
+
+import styled from "styled-components";
 
 const StyledBlogListSection = styled.div`
   a {
-    ${({ theme }) => themedAnchorUnderline(theme)}
+    background-image: linear-gradient(
+      to top,
+      #e896bf,
+      #fff 100%,
+      #0000 100%,
+      #0000
+    );
     color: #429aff;
     transition: background-image 0.5s;
   }
 `;
 
-const BlogListHeader = styled.h3`
-  margin-bottom: ${rhythm(1 / 4)};
-`;
+const BlogListHeader = styled.h3``;
 
 const BlogListHeaderLink = styled(Link)`
   box-shadow: none;
 `;
 
 const BlogListSection = ({ posts }) => {
-  const { theme } = useContext(ThemeContext);
   return (
-    <StyledBlogListSection theme={theme}>
+    <StyledBlogListSection>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
         const { status } = node.frontmatter;

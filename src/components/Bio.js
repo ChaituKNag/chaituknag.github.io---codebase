@@ -1,25 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
-import { rhythm } from "../utils/typography";
-import styled, { css } from "styled-components";
-import { ThemeContext } from "../utils/theme-context";
+import styled from "styled-components";
 
 const BioBox = styled.div`
   display: flex;
-  box-shadow: ${({ theme }) =>
-    theme === "dark"
-      ? "0 2px 14px -4px rgba(255, 255, 255, .3)"
-      : "0 2px 14px -4px rgba(0, 0, 0, .3)"};
-  margin-bottom: ${rhythm(1.5)};
-  padding: ${rhythm(0.8)};
+  box-shadow: 0 2px 14px -4px rgba(0, 0, 0, 0.3);
 `;
 
 const BioImage = styled(Image)`
   margin-bottom: 0;
   min-width: 50px;
   border-radius: 100%;
-  margin-right: ${rhythm(1 / 2)};
 `;
 
 const BioAuthor = styled.p`
@@ -37,7 +29,6 @@ const BioIcon = styled.img`
 `;
 
 function Bio() {
-  const { theme } = useContext(ThemeContext);
   return (
     <StaticQuery
       query={bioQuery}
@@ -45,7 +36,7 @@ function Bio() {
         const { author, social } = data.site.siteMetadata;
 
         return (
-          <BioBox theme={theme}>
+          <BioBox>
             <BioImage fixed={data.avatar.childImageSharp.fixed} alt={author} />
             <BioAuthor>
               Personal and technical views of <strong>{author}</strong> <br />

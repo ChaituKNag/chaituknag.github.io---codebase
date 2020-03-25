@@ -1,32 +1,18 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, graphql } from "gatsby";
 
 import Bio from "../components/Bio";
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
-import { rhythm, themedAnchorUnderline } from "../utils/typography";
-import styled, { css } from "styled-components";
-import { ThemeContext } from "../utils/theme-context";
+import styled from "styled-components";
 
 const StyledBlogPostInfo = styled.p`
   display: inline-block;
-  margin-bottom: ${rhythm(1)};
-  margin-top: ${rhythm(0)};
-  border-top: 1px dotted ${({ theme }) => (theme === "dark" ? "#fff" : "#333")};
-  border-bottom: 1px dotted
-    ${({ theme }) => (theme === "dark" ? "#fff" : "#333")};
-  padding-top: ${rhythm(0)};
-  font-size: ${rhythm(0.5)};
+  border-top: 1px dotted #333;
+  border-bottom: 1px dotted #333;
 `;
 
-const StyledHr = styled.hr`
-  margin-bottom: ${rhythm(1)};
-  ${({ theme }) =>
-    theme === "dark" &&
-    css`
-      background-color: #fff;
-    `}
-`;
+const StyledHr = styled.hr``;
 
 const BlogLeadLinkList = styled.ul`
   display: flex;
@@ -38,34 +24,40 @@ const BlogLeadLinkList = styled.ul`
 
 const StyledBlogPostContent = styled.div`
   a {
-    ${({ theme }) => themedAnchorUnderline(theme)}
+    background-image: linear-gradient(
+      to top,
+      #e896bf,
+      #fff 100%,
+      #0000 100%,
+      #0000
+    );
   }
 `;
 
 const BlogLeadLinkItem = styled(Link)`
-  ${({ theme }) => themedAnchorUnderline(theme)}
+  background-image: linear-gradient(
+    to top,
+    #e896bf,
+    #fff 100%,
+    #0000 100%,
+    #0000
+  );
 `;
 
 const BlogPostInfo = ({ children }) => {
-  const { theme } = useContext(ThemeContext);
-
-  return <StyledBlogPostInfo theme={theme}>{children}</StyledBlogPostInfo>;
+  return <StyledBlogPostInfo>{children}</StyledBlogPostInfo>;
 };
 
 const BlogPostContent = ({ post, theme }) => {
   return (
     <>
-      <StyledBlogPostContent
-        theme={theme}
-        dangerouslySetInnerHTML={{ __html: post.html }}
-      />
-      <StyledHr theme={theme} />
+      <StyledBlogPostContent dangerouslySetInnerHTML={{ __html: post.html }} />
+      <StyledHr />
     </>
   );
 };
 
 const BlogPostWrapper = ({ post, previous, next }) => {
-  const { theme } = useContext(ThemeContext);
   return (
     <>
       <h1>{post.frontmatter.title}</h1>
@@ -74,14 +66,13 @@ const BlogPostWrapper = ({ post, previous, next }) => {
         {"☕".repeat((post.timeToRead - 1) / 5 + 1)}{" "}
         {`${post.timeToRead} min read`}
       </BlogPostInfo>
-      <BlogPostContent post={post} theme={theme} />
+      <BlogPostContent post={post} />
       <Bio />
 
       <BlogLeadLinkList>
         <li>
           {previous && (
             <BlogLeadLinkItem
-              theme={theme}
               to={previous.frontmatter.path || previous.fields.slug}
               rel="prev"
             >
@@ -92,7 +83,6 @@ const BlogPostWrapper = ({ post, previous, next }) => {
         <li>
           {next && (
             <BlogLeadLinkItem
-              theme={theme}
               to={next.frontmatter.path || next.fields.slug}
               rel="next"
             >
