@@ -16,4 +16,8 @@ export const GlobalStyle = createGlobalStyle`
     html, body {
         font-size: 20px;
     }
+
+    img {
+        max-width: 100%;
+    }
 `;

@@ -8,6 +8,7 @@ import SEO from "../components/seo";
 import styled from "styled-components";
 import { SectionHeader } from "../components/styled/headings.styled";
 import { FullWidthDiv, SingleColumn } from "../components/styled/divs.styled";
+import { InternalLink } from "../components/styled/links.styled";
 
 const StyledBlogListSection = styled.div`
   padding: 3rem 0;
@@ -30,11 +31,12 @@ const BlogListSection = ({ posts }) => {
           return status && status === "complete" ? (
             <div key={node.fields.slug}>
               <BlogListHeader>
-                <BlogListHeaderLink
+                <InternalLink
+                  primary
                   to={node.frontmatter.path || node.fields.slug}
                 >
                   {title}
-                </BlogListHeaderLink>
+                </InternalLink>
               </BlogListHeader>
               <small>
                 {node.frontmatter.date} •{" "}

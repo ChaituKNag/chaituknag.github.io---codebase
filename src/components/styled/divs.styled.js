@@ -13,4 +13,5 @@ export const SingleColumn = styled.div`
   display: ${props => (props.flex ? "flex" : "block")};
   align-items: center;
   justify-content: ${props => props.justify || "left"};
+  flex-direction: ${props => props.direction || "row"};
 `;

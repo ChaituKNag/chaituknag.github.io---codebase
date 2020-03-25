@@ -4,14 +4,22 @@ import Image from "gatsby-image";
 import styled from "styled-components";
 import { FullWidthDiv, SingleColumn } from "./styled/divs.styled";
 import { ExternalLink } from "./styled/links.styled";
-
-const BioBox = styled.div`
-  display: flex;
-  box-shadow: 0 2px 14px -4px rgba(0, 0, 0, 0.3);
-`;
+import { Button } from "@material-ui/core";
 
 const BioImageBox = styled.div`
-  margin-right: 30px;
+  margin: 30px;
+  border-radius: 50%;
+  max-width: 300px;
+  width: 300px;
+  box-shadow: 5px 5px 20px -10px ${props => props.theme.fg};
+  border: 10px solid white;
+  overflow: hidden;
+  flex: 1;
+
+  @media screen and (max-width: ${props => props.theme.breaks.sm}) {
+    width: 200px;
+    margin: 20px;
+  }
 `;
 
 const BioImage = styled(Image)`
@@ -24,15 +32,19 @@ const BioAuthor = styled.span`
   margin: 0;
 `;
 
-const SocialLink = styled.a`
-  background-image: none;
-`;
-
 const BioIcon = styled.img`
   width: 30px;
   height: 30px;
   margin: 8px 10px;
   display: inline-block;
+`;
+
+const PortfolioButton = styled(Button)`
+  display: block;
+  border-color: ${props => props.theme.primary};
+  color: ${props => props.theme.primary};
+  text-transform: capitalize;
+  margin-top: 30px;
 `;
 
 function Bio() {
@@ -45,15 +57,17 @@ function Bio() {
         return (
           <Fragment>
             <FullWidthDiv bg2>
-              <SingleColumn flex justify="center">
+              <SingleColumn flex justify="center" direction="column">
                 <BioImageBox>
                   <BioImage
-                    fixed={data.avatar.childImageSharp.fixed}
+                    fluid={data.avatar.childImageSharp.fluid}
                     alt={author}
                   />
                 </BioImageBox>
-                {`Personal and technical views of  `}&nbsp;
-                <strong>{author}</strong>
+                <div>
+                  {`Personal and technical views of  `}&nbsp;
+                  <strong>{author}</strong>
+                </div>
               </SingleColumn>
               <SingleColumn flex justify="center">
                 <BioAuthor>
@@ -120,6 +134,17 @@ function Bio() {
                   </ExternalLink>
                 </BioAuthor>
               </SingleColumn>
+              <SingleColumn flex justify="center">
+                <PortfolioButton
+                  component="a"
+                  href="https://thebestdeveloper.me"
+                  rel="noreferrer"
+                  target="_blank"
+                  variant="outlined"
+                >
+                  Looking for my portfolio?
+                </PortfolioButton>
+              </SingleColumn>
             </FullWidthDiv>
           </Fragment>
         );
@@ -132,8 +157,8 @@ const bioQuery = graphql`
   query BioQuery {
     avatar: file(absolutePath: { regex: "/profile-pic.jpeg/" }) {
       childImageSharp {
-        fixed(width: 150, height: 150) {
-          ...GatsbyImageSharpFixed
+        fluid {
+          ...GatsbyImageSharpFluid
         }
       }
     }

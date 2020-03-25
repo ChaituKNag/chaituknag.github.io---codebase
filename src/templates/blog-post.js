@@ -6,14 +6,13 @@ import Layout from "../components/Layout";
 import SEO from "../components/seo";
 import styled from "styled-components";
 import { FullWidthDiv, SingleColumn } from "../components/styled/divs.styled";
+import { InternalLink } from "../components/styled/links.styled";
 
 const StyledBlogPostInfo = styled.p`
   display: inline-block;
   border-top: 1px dotted #333;
   border-bottom: 1px dotted #333;
 `;
-
-const StyledHr = styled.hr``;
 
 const BlogLeadLinkList = styled.ul`
   display: flex;
@@ -38,16 +37,6 @@ const StyledBlogPostContent = styled.div`
   }
 `;
 
-const BlogLeadLinkItem = styled(Link)`
-  background-image: linear-gradient(
-    to top,
-    #e896bf,
-    #fff 100%,
-    #0000 100%,
-    #0000
-  );
-`;
-
 const BlogPostInfo = ({ children }) => {
   return <StyledBlogPostInfo>{children}</StyledBlogPostInfo>;
 };
@@ -56,7 +45,6 @@ const BlogPostContent = ({ post, theme }) => {
   return (
     <Fragment>
       <StyledBlogPostContent dangerouslySetInnerHTML={{ __html: post.html }} />
-      <StyledHr />
     </Fragment>
   );
 };
@@ -77,22 +65,24 @@ const BlogPostWrapper = ({ post, previous, next }) => {
         <BlogLeadLinkList>
           <li>
             {previous && (
-              <BlogLeadLinkItem
+              <InternalLink
+                primary
                 to={previous.frontmatter.path || previous.fields.slug}
                 rel="prev"
               >
                 ← {previous.frontmatter.title}
-              </BlogLeadLinkItem>
+              </InternalLink>
             )}
           </li>
           <li>
             {next && (
-              <BlogLeadLinkItem
+              <InternalLink
+                primary
                 to={next.frontmatter.path || next.fields.slug}
                 rel="next"
               >
                 {next.frontmatter.title} →
-              </BlogLeadLinkItem>
+              </InternalLink>
             )}
           </li>
         </BlogLeadLinkList>
