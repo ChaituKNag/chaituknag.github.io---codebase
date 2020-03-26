@@ -71,8 +71,8 @@ module.exports = {
         name: `KNC - Blog`,
         short_name: `KNC-Blog`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
+        background_color: `#552f5c`,
+        theme_color: `#f5fbfd`,
         display: `minimal-ui`,
         icon: `content/assets/smiley-with-coat-logo.png`
       }
