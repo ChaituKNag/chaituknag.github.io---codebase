@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
   siteMetadata: {
     title: `Naga Chaitanya Konada`,
@@ -100,6 +102,15 @@ module.exports = {
         stylesProvider: {
           injectFirst: true
         }
+      }
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
+        host: `preview.contentful.com`
       }
     },
     `gatsby-plugin-offline`,
