@@ -1,9 +1,8 @@
+import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-export const InternalLink = styled(Link)`
-  color: ${props =>
-    props.primary ? props.theme.primary : props.theme.secondary};
+const StyledInternalLink = styled(Link)`
   text-decoration: none;
 
   &:active,
@@ -12,6 +11,20 @@ export const InternalLink = styled(Link)`
     text-decoration: ${props => props.decoration || "underline"};
   }
 `;
+
+const PrimaryInternalLink = styled(StyledInternalLink)`
+  color: ${props => props.theme.primary};
+`;
+const SecondaryInternalLink = styled(StyledInternalLink)`
+  color: ${props => props.theme.secondary};
+`;
+
+export const InternalLink = ({ primary, ...restProps }) =>
+  primary ? (
+    <PrimaryInternalLink {...restProps} />
+  ) : (
+    <SecondaryInternalLink {...restProps} />
+  );
 
 export const ExternalLink = styled.a`
   color: ${props =>
