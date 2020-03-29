@@ -15,32 +15,35 @@ const BlogListHeader = styled.h3`
   margin-bottom: 0;
 `;
 
-const BlogListSection = ({ posts }) => {
+const BlogListSection = ({ posts, postDataMapper }) => {
   return (
     <FullWidthDiv>
       <SingleColumn>
         <SectionHeader center>All Blog Posts</SectionHeader>
         {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug;
-          const { status } = node.frontmatter;
+          const {
+            title,
+            status,
+            slug,
+            date,
+            timeToRead,
+            spoiler
+          } = postDataMapper(node);
+
           return status && status === "complete" ? (
-            <div key={node.fields.slug}>
+            <div key={slug}>
               <BlogListHeader>
-                <InternalLink
-                  primary
-                  to={node.frontmatter.path || node.fields.slug}
-                >
+                <InternalLink primary to={slug}>
                   {title}
                 </InternalLink>
               </BlogListHeader>
               <small>
-                {node.frontmatter.date} •{" "}
-                {"☕".repeat((node.timeToRead - 1) / 5 + 1)}{" "}
-                {`${node.timeToRead} min read`}
+                {date} • {"☕".repeat((timeToRead - 1) / 5 + 1)}{" "}
+                {`${timeToRead} min read`}
               </small>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.spoiler || node.excerpt
+                  __html: spoiler
                 }}
               />
             </div>
@@ -54,6 +57,7 @@ const BlogListSection = ({ posts }) => {
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
+  const contentfulPosts = data.allContentfulBlogPost.edges;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -62,7 +66,28 @@ const BlogIndex = ({ data, location }) => {
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
       <Bio />
-      <BlogListSection posts={posts} />
+      <BlogListSection
+        posts={posts}
+        postDataMapper={node => ({
+          title: node.frontmatter.title || node.fields.slug,
+          status: node.frontmatter.status,
+          slug: node.frontmatter.path || node.fields.slug,
+          date: node.frontmatter.date,
+          timeToRead: node.timeToRead,
+          spoiler: node.frontmatter.spoiler || node.excerpt
+        })}
+      />
+      <BlogListSection
+        posts={contentfulPosts}
+        postDataMapper={node => ({
+          title: node.title,
+          status: node.published ? "complete" : "draft",
+          slug: node.slug,
+          date: node.createdAt,
+          timeToRead: node.bodyText.childMarkdownRemark.timeToRead,
+          spoiler: node.spoiler
+        })}
+      />
       {posts.length === 0 && <p>The fun has not yet begun!</p>}
     </Layout>
   );
@@ -77,7 +102,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { parent: { internal: { type: { eq: "File" } } } }
+    ) {
       edges {
         node {
           excerpt
@@ -92,6 +120,32 @@ export const pageQuery = graphql`
             status
           }
           timeToRead
+        }
+      }
+    }
+
+    allContentfulBlogPost(
+      sort: { fields: createdOn, order: DESC }
+      limit: 100
+      filter: { published: { eq: true } }
+    ) {
+      edges {
+        node {
+          slug
+          title
+          spoiler
+          tag
+          createdOn(fromNow: true)
+          contentful_id
+          createdAt(fromNow: true)
+          updatedAt(fromNow: true)
+          id
+          published
+          bodyText {
+            childMarkdownRemark {
+              timeToRead
+            }
+          }
         }
       }
     }
