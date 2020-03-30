@@ -55,11 +55,8 @@ const StyledBlogPostContent = styled.div`
     line-height: 1.7rem;
   }
 
-  img {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 600px;
-    display: block;
+  .gatsby-resp-image-background-image {
+    opacity: 1 !important;
   }
 `;
 
@@ -70,7 +67,11 @@ const BlogPostInfo = ({ children }) => {
 const BlogPostContent = ({ post, theme }) => {
   return (
     <Fragment>
-      <StyledBlogPostContent dangerouslySetInnerHTML={{ __html: post.html }} />
+      <StyledBlogPostContent
+        dangerouslySetInnerHTML={{
+          __html: post.bodyText.childMarkdownRemark.html
+        }}
+      />
     </Fragment>
   );
 };
@@ -80,11 +81,13 @@ const BlogPostWrapper = ({ post, previous, next }) => {
     <Fragment>
       <FullWidthDiv bg2>
         <SingleColumn flex justify="center" direction="column">
-          <MainHeader>{post.frontmatter.title}</MainHeader>
+          <MainHeader>{post.title}</MainHeader>
           <BlogPostInfo>
-            {post.frontmatter.date} {` • `}
-            {"☕".repeat((post.timeToRead - 1) / 5 + 1)}{" "}
-            {`${post.timeToRead} min read`}
+            {post.createdOn} {` • `}
+            {"☕".repeat(
+              (post.bodyText.childMarkdownRemark.timeToRead - 1) / 5 + 1
+            )}{" "}
+            {`${post.bodyText.childMarkdownRemark.timeToRead} min read`}
           </BlogPostInfo>
         </SingleColumn>
       </FullWidthDiv>
@@ -97,23 +100,15 @@ const BlogPostWrapper = ({ post, previous, next }) => {
           <BlogLeadLinkList>
             <li>
               {previous && (
-                <InternalLink
-                  primary
-                  to={previous.frontmatter.path || previous.fields.slug}
-                  rel="prev"
-                >
-                  ← {previous.frontmatter.title}
+                <InternalLink primary to={previous.slug} rel="prev">
+                  ← {previous.title}
                 </InternalLink>
               )}
             </li>
             <li>
               {next && (
-                <InternalLink
-                  primary
-                  to={next.frontmatter.path || next.fields.slug}
-                  rel="next"
-                >
-                  {next.frontmatter.title} →
+                <InternalLink primary to={next.slug} rel="next">
+                  {next.title} →
                 </InternalLink>
               )}
             </li>
@@ -125,16 +120,13 @@ const BlogPostWrapper = ({ post, previous, next }) => {
 };
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark;
+  const post = data.contentfulBlogPost;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.spoiler || post.excerpt}
-      />
+      <SEO title={post.title} description={post.spoiler} />
       <BlogPostWrapper post={post} previous={previous} next={next} />
     </Layout>
   );
@@ -143,23 +135,30 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query createBlogPostDetailsPage($id: String!) {
     site {
       siteMetadata {
         title
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        spoiler
+    contentfulBlogPost(id: { eq: $id }) {
+      title
+      bannerImage {
+        fluid {
+          srcSet
+        }
       }
-      timeToRead
+      bodyText {
+        childMarkdownRemark {
+          html
+          timeToRead
+        }
+      }
+      createdOn(fromNow: true)
+      tag
+      updatedAt
+      spoiler
     }
   }
 `;

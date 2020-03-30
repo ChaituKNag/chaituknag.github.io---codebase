@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
   siteMetadata: {
     title: `Naga Chaitanya Konada`,
@@ -52,7 +54,15 @@ module.exports = {
             }
           },
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`
+          `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              maxWidth: 700,
+              loading: "lazy",
+              withWebp: true
+            }
+          }
         ]
       }
     },
@@ -64,7 +74,7 @@ module.exports = {
         trackingId: `UA-112669004-2`
       }
     },
-    `gatsby-plugin-feed`,
+    // `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -100,6 +110,15 @@ module.exports = {
         stylesProvider: {
           injectFirst: true
         }
+      }
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
+        host: `preview.contentful.com`
       }
     },
     `gatsby-plugin-offline`,
