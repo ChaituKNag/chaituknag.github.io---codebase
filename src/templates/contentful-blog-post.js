@@ -83,7 +83,7 @@ const BlogPostWrapper = ({ post, previous, next }) => {
         <SingleColumn flex justify="center" direction="column">
           <MainHeader>{post.title}</MainHeader>
           <BlogPostInfo>
-            {post.createdAt} {` • `}
+            {post.createdOn} {` • `}
             {"☕".repeat(
               (post.bodyText.childMarkdownRemark.timeToRead - 1) / 5 + 1
             )}{" "}
@@ -155,7 +155,7 @@ export const pageQuery = graphql`
           timeToRead
         }
       }
-      createdAt(fromNow: true)
+      createdOn(fromNow: true)
       tag
       updatedAt
       spoiler

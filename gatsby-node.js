@@ -1,5 +1,5 @@
 const {
-  createMdPages,
+  // createMdPages,
   createSlugForMdPages
 } = require("./page-utils/create-mark-down-pages");
 const {
@@ -8,7 +8,7 @@ const {
 
 exports.createPages = ({ graphql, actions: { createPage } }) => {
   return Promise.all([
-    createMdPages(graphql, createPage),
+    // createMdPages(graphql, createPage),
     createContentfulBlogPostPage(graphql, createPage)
   ]);
 };

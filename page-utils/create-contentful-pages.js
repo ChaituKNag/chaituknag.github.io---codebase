@@ -6,7 +6,7 @@ exports.createContentfulBlogPostPage = function(graphql, createPage) {
     query createBlogPostPage {
       allContentfulBlogPost(
         filter: { published: { eq: true } }
-        sort: { fields: createdAt, order: DESC }
+        sort: { fields: createdOn, order: DESC }
       ) {
         edges {
           node {
@@ -23,8 +23,6 @@ exports.createContentfulBlogPostPage = function(graphql, createPage) {
     }
 
     const posts = res.data.allContentfulBlogPost.edges;
-
-    console.log(JSON.stringify(posts, null, 2));
 
     posts.forEach(({ node }, index) => {
       const previous =

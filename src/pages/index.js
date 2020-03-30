@@ -66,7 +66,7 @@ const BlogIndex = ({ data, location }) => {
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
       <Bio />
-      <BlogListSection
+      {/* <BlogListSection
         posts={posts}
         postDataMapper={node => ({
           title: node.frontmatter.title || node.fields.slug,
@@ -76,14 +76,14 @@ const BlogIndex = ({ data, location }) => {
           timeToRead: node.timeToRead,
           spoiler: node.frontmatter.spoiler || node.excerpt
         })}
-      />
+      /> */}
       <BlogListSection
         posts={contentfulPosts}
         postDataMapper={node => ({
           title: node.title,
           status: node.published ? "complete" : "draft",
           slug: node.slug,
-          date: node.createdAt,
+          date: node.createdOn,
           timeToRead: node.bodyText.childMarkdownRemark.timeToRead,
           spoiler: node.spoiler
         })}
@@ -137,7 +137,7 @@ export const pageQuery = graphql`
           tag
           createdOn(fromNow: true)
           contentful_id
-          createdAt(fromNow: true)
+          createdOn(fromNow: true)
           updatedAt(fromNow: true)
           id
           published
